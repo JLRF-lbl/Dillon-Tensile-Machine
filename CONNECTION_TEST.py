@@ -84,6 +84,7 @@ while True:
             break
         elif newCommand == 'GO1:':
             while True:
+                #task.read()
                 data = task.read(number_of_samples_per_channel = 1)
                 if data[0] >= loadLimit:
                     print('Load Cell limit exceeding, shutting down motor...')
