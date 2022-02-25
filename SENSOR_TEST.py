@@ -17,9 +17,9 @@ with nidaqmx.Task() as task:
 
     print('Load Cell Sensor Test ')
 
-    ai_channel = task.ai_channels.add_ai_voltage_chan_with_excit("Dev2/ai0",
+    ai_channel = task.ai_channels.add_ai_voltage_chan_with_excit("Dev1/ai0",
     name_to_assign_to_channel= "Load Cell", 
-    terminal_config= TerminalConfiguration.DIFFERENTIAL,
+    terminal_config= TerminalConfiguration.BAL_DIFF,
     voltage_excit_source= ExcitationSource.EXTERNAL,
     voltage_excit_val= 10.0)
 
@@ -34,7 +34,7 @@ with nidaqmx.Task() as task:
      i += 1
      #print(data)
 
-     if data[0] <= 0.14:
+     if data[0] <= 0.12:
         print('Data holding within range...', data[0])
      else:
         print('Data has gone over selected range, stopping', data[0])

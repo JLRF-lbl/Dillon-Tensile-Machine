@@ -192,7 +192,7 @@ def sampletest():
 
     #     ai_channel = task.ai_channels.add_ai_voltage_chan_with_excit("Dev2/ai2",
     #     name_to_assign_to_channel= "Load Cell", 
-    #     terminal_config= TerminalConfiguration.DIFFERENTIAL,
+    #     terminal_config= TerminalConfiguration.BAL_DIFF,
     #     voltage_excit_source= ExcitationSource.EXTERNAL,
     #     voltage_excit_val= 10.0)
 
