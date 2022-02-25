@@ -10,7 +10,7 @@ import os
 #print(item, sep=' ', end='', flush=True) to print dynamically
 
 #You will have to change to the correct working directory, this was just mine
-os.chdir(r"C:\Users\Claudia\Documents\LBNL_Working\DILLON MACHINE")
+os.chdir(r"C:\Users\CMBird\Documents\Dillon-Tensile-Machine")
 
 #create an INET, STREAMing socket (IPv4, TCP/IP)
 try:
@@ -53,13 +53,13 @@ with open(r"DILLON_CONFIG.csv", 'r') as f:
     for row in mycsv:
         text = row[0]
         client.send(bytes((text), 'ascii')) #Check if this works
-        time.sleep(delayTime) #Wait between line sends
+        time.sleep(0.1) #Wait between line sends
 
 #Create DAQ task channel
 task = nidaqmx.Task()
-ai_channel = task.ai_channels.add_ai_voltage_chan_with_excit("Dev2/ai0",
+ai_channel = task.ai_channels.add_ai_voltage_chan_with_excit("Dev1/ai0",
 name_to_assign_to_channel= "Load Cell", 
-terminal_config= TerminalConfiguration.DIFFERENTIAL,
+terminal_config= TerminalConfiguration.BAL_DIFF,
 voltage_excit_source= ExcitationSource.EXTERNAL,
 voltage_excit_val= 10.0)
 
@@ -68,7 +68,6 @@ voltage_excit_val= 10.0)
 loadLimit = 0.12
 
 while True:
-    
     try:
         newCommand = input('Type Command: ')
 
